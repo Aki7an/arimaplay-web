@@ -69,7 +69,7 @@
     }
     if (node.tagName === "A") {
       node.href = "mailto:" + mail;
-      if (!node.dataset.keepLabel) {
+      if (!node.hasAttribute("data-keep-label")) {
         node.textContent = mail;
       }
     }
