@@ -413,6 +413,28 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.game-media {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1.1rem;
+}
+
+.game-logo {
+  width: min(100%, 14rem);
+  height: auto;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.8rem;
+  background: #0b0714;
+}
+
+.game-media .shot {
+  max-width: 14rem;
+}
+
+.shot-dark {
+  background: #140c22;
+}
+
 .notice {
   display: flex;
   flex-direction: column;

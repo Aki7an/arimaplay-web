@@ -50,6 +50,8 @@ Sustituye estos archivos manteniendo el nombre, o actualiza las rutas en `index.
 - `assets/images/captura-menu.png`
 - `assets/images/captura-partida.png`
 - `assets/images/captura-temas.png`
+- `assets/images/logo-soundscope.png`
+- `assets/images/captura-soundscope.png`
 
 ## Publicar
 
