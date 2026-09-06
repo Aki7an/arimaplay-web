@@ -12,7 +12,7 @@ window.ARIMA_PLAY = {
    */
   testerFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe2LV2Q6M-L67REK7EMAV8qSZbSn4jQhAj27Xg1I5q5skpd6Q/viewform",
 
-  contactEmail: "aki7an@gmail.com",
+  contactEmail: "aki7andev@gmail.com",
 
   social: {
     instagram: "",
