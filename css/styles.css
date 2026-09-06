@@ -366,6 +366,11 @@ h3 {
 
 .cards {
   grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.5rem;
+}
+
+.cards.pair {
+  grid-template-columns: 1fr 1fr;
 }
 
 .card,
@@ -491,6 +496,7 @@ h3 {
   .hero-grid,
   .split,
   .cards,
+  .cards.pair,
   .gallery {
     grid-template-columns: 1fr;
   }

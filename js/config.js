@@ -15,8 +15,6 @@ window.ARIMA_PLAY = {
 
   contactEmail: "aki7an@gmail.com",
 
-  githubProfile: "https://github.com/aki7an",
-
   social: {
     instagram: "",
     x: "",

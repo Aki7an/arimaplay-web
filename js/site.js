@@ -76,7 +76,6 @@
   });
 
   var socialMap = {
-    github: config.githubProfile,
     instagram: config.social && config.social.instagram,
     x: config.social && config.social.x,
     bluesky: config.social && config.social.bluesky,
