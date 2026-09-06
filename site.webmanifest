@@ -1,0 +1,24 @@
+{
+  "name": "Arima Play",
+  "short_name": "Arima Play",
+  "description": "Estudio independiente de videojuegos. CifraLetra está en desarrollo.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4eee2",
+  "theme_color": "#f4eee2",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/icono-cifraletra.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
