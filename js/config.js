@@ -7,11 +7,10 @@ window.ARIMA_PLAY = {
   canonicalOrigin: "https://arimaplay.com",
 
   /**
-   * PLACEHOLDER — aún no hay formulario.
-   * Cuando lo tengas, pega la URL completa de Google Forms, Tally o Formspree.
-   * Ejemplo: "https://tally.so/r/xxxx"
+   * URL pública del formulario de testers (Google Forms, Tally o Formspree).
+   * Vacío = los botones muestran "Próximamente".
    */
-  testerFormUrl: "",
+  testerFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe2LV2Q6M-L67REK7EMAV8qSZbSn4jQhAj27Xg1I5q5skpd6Q/viewform",
 
   contactEmail: "aki7an@gmail.com",
 
