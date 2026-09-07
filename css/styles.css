@@ -23,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header);
 }
 
 body {
@@ -232,9 +233,12 @@ a:hover {
   border: 1px solid var(--line);
 }
 
-.hero,
 .section {
   padding: 5rem 0;
+}
+
+.hero {
+  padding: 1.1rem 0 4.5rem;
 }
 
 .hero-grid,
@@ -413,22 +417,34 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.game-media {
+.game-split {
   display: grid;
-  gap: 0.9rem;
-  margin-top: 1.1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 42%);
+  gap: 1rem;
+  align-items: start;
+  margin-top: 0.9rem;
+}
+
+.game-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
+.game-copy .muted {
+  margin: 0;
 }
 
 .game-logo {
-  width: min(100%, 14rem);
+  width: min(100%, 11rem);
   height: auto;
   padding: 0.55rem 0.7rem;
   border-radius: 0.8rem;
   background: #0b0714;
 }
 
-.game-media .shot {
-  max-width: 14rem;
+.game-split .shot {
+  margin: 0;
 }
 
 .shot-dark {
@@ -519,14 +535,18 @@ h3 {
   .split,
   .cards,
   .cards.pair,
+  .game-split,
   .gallery {
     grid-template-columns: 1fr;
   }
 
-  .hero,
   .section,
   .legal-page {
     padding: 3.4rem 0;
+  }
+
+  .hero {
+    padding: 0.7rem 0 2.8rem;
   }
 }
 
