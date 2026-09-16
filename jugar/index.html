@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jugar CifraLetra — Arima Play</title>
+  <meta name="description" content="Juega CifraLetra en el navegador: un pasatiempo de lógica, letras y deducción.">
+  <link rel="canonical" href="https://arimaplay.com/jugar/">
+  <meta name="theme-color" content="#f4eee2">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Arima Play">
+  <meta property="og:title" content="Jugar CifraLetra">
+  <meta property="og:description" content="Descifra la frase. Cada número esconde una letra.">
+  <meta property="og:url" content="https://arimaplay.com/jugar/">
+  <meta property="og:image" content="https://arimaplay.com/assets/images/icono-cifraletra.png">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/images/icono-cifraletra.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="play-page">
+  <a class="skip-link" href="#juego">Saltar al juego</a>
+  <header class="site-header play-header">
+    <div class="wrap header-inner">
+      <a class="logo" href="../index.html" aria-label="Arima Play, ir al inicio">
+        <img class="site-logo" src="../assets/images/logo-arimaplay.png" width="840" height="240" alt="Arima Play">
+      </a>
+      <nav class="play-nav" aria-label="Partida">
+        <a href="../index.html">Inicio</a>
+        <a class="button-secondary" href="../index.html#testers">Ser tester</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="juego" class="play-main">
+    <div class="play-copy wrap">
+      <p class="eyebrow">CifraLetra</p>
+      <h1>Juega en el navegador</h1>
+      <p class="muted">La primera carga puede tardar: el juego pesa y se descarga completa. Luego se queda en este dispositivo.</p>
+    </div>
+    <div class="play-stage">
+      <iframe
+        id="cifraletra-frame"
+        title="CifraLetra"
+        src="engine/index.html"
+        allow="autoplay; fullscreen; gamepad; accelerometer"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </main>
+  <script src="../js/config.js"></script>
+  <script src="../js/site.js"></script>
+</body>
+</html>

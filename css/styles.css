@@ -514,6 +514,87 @@ h3 {
   }
 }
 
+.play-page {
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(227, 106, 28, 0.14), transparent 24rem),
+    #1a1714;
+}
+
+.play-page .site-header {
+  background: rgba(244, 238, 226, 0.94);
+}
+
+.play-header .header-inner {
+  min-height: 3.6rem;
+}
+
+.play-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.play-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.play-main {
+  padding: 1rem 0 1.5rem;
+}
+
+.play-copy {
+  margin-bottom: 1rem;
+}
+
+.play-copy h1 {
+  margin: 0 0 0.4rem;
+  color: #f4eee2;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+}
+
+.play-copy .muted {
+  max-width: 36rem;
+  color: #cfc4b3;
+}
+
+.play-stage {
+  width: min(28rem, calc(100% - 1.5rem));
+  height: min(78dvh, 56rem);
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(244, 238, 226, 0.16);
+  background: #0d0c0b;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.play-stage iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+@media (max-width: 720px) {
+  .play-main {
+    padding: 0;
+  }
+
+  .play-copy {
+    display: none;
+  }
+
+  .play-stage {
+    width: 100%;
+    height: calc(100dvh - 3.6rem);
+    border-radius: 0;
+    border: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

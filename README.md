@@ -1,8 +1,9 @@
 # Arima Play — web oficial
 
-Sitio estático del estudio independiente **Arima Play**. Presenta CifraLetra y la convocatoria de testers.
+Sitio estático del estudio independiente **Arima Play**. Presenta CifraLetra, la versión jugable en el navegador y la convocatoria de testers.
 
 - Dominio canónico: https://arimaplay.com
+- Jugar: https://arimaplay.com/jugar/
 - Repositorio previsto: `aki7an/arimaplay-web`
 - Alojamiento: GitHub Pages (rama `main`, carpeta raíz)
 
@@ -12,6 +13,8 @@ Este repositorio es independiente del videojuego. No incluye keystores, contrase
 
 ```text
 index.html            Portada
+jugar/                Página para jugar CifraLetra
+jugar/engine/         Export HTML de Godot
 aviso-legal.html
 privacidad.html
 404.html

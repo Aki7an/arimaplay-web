@@ -4,3 +4,6 @@ desktop.ini
 .idea/
 .vscode/
 *.log
+jugar/engine/index.pck
+jugar/engine/*.zip
+jugar/engine/*.pck.gz

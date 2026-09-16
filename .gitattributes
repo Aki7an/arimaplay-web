@@ -1,0 +1,6 @@
+# Keep Godot web binaries as binary so GitHub Pages can serve them intact.
+*.wasm binary
+*.pck binary
+*.pck.part1 binary
+*.pck.part2 binary
+jugar/engine/*.pck.part* binary
