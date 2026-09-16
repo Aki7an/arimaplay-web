@@ -40,8 +40,14 @@
       <p class="eyebrow">CifraLetra</p>
       <h1>Juega en el navegador</h1>
       <p class="muted">La primera carga puede tardar: el juego pesa y se descarga completa. Luego se queda en este dispositivo.</p>
+      <p class="play-toolbar">
+        <button type="button" class="button" data-fullscreen>Pantalla completa</button>
+      </p>
     </div>
-    <div class="play-stage">
+    <div class="play-stage" id="play-stage">
+      <button type="button" class="play-fullscreen" data-fullscreen aria-pressed="false">
+        Pantalla completa
+      </button>
       <iframe
         id="cifraletra-frame"
         title="CifraLetra"

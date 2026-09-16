@@ -84,6 +84,96 @@
     youtube: config.social && config.social.youtube
   };
 
+  var stage = document.getElementById("play-stage");
+  var fullscreenButtons = document.querySelectorAll("[data-fullscreen]");
+
+  function fullscreenElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
+  function isGameFullscreen() {
+    if (!stage) {
+      return false;
+    }
+    return fullscreenElement() === stage || stage.classList.contains("is-fullscreen");
+  }
+
+  function updateFullscreenButtons() {
+    var active = isGameFullscreen();
+    var label = active ? "Salir de pantalla completa" : "Pantalla completa";
+    fullscreenButtons.forEach(function (button) {
+      button.textContent = label;
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
+
+  function requestNativeFullscreen(element) {
+    var request = element.requestFullscreen || element.webkitRequestFullscreen;
+    if (!request) {
+      return null;
+    }
+    var result = request.call(element);
+    if (result && typeof result.then === "function") {
+      return result;
+    }
+    return Promise.resolve();
+  }
+
+  function requestStageFullscreen() {
+    if (!stage) {
+      return Promise.reject();
+    }
+    var native = requestNativeFullscreen(stage);
+    if (native) {
+      return native;
+    }
+    stage.classList.add("is-fullscreen");
+    document.body.style.overflow = "hidden";
+    updateFullscreenButtons();
+    return Promise.resolve();
+  }
+
+  function exitStageFullscreen() {
+    if (fullscreenElement()) {
+      if (document.exitFullscreen) {
+        return document.exitFullscreen();
+      }
+      if (document.webkitExitFullscreen) {
+        return document.webkitExitFullscreen();
+      }
+    }
+    if (stage) {
+      stage.classList.remove("is-fullscreen");
+    }
+    document.body.style.overflow = "";
+    updateFullscreenButtons();
+    return Promise.resolve();
+  }
+
+  fullscreenButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (isGameFullscreen()) {
+        exitStageFullscreen();
+      } else {
+        requestStageFullscreen().catch(function () {
+          if (stage) {
+            stage.classList.add("is-fullscreen");
+            document.body.style.overflow = "hidden";
+            updateFullscreenButtons();
+          }
+        });
+      }
+    });
+  });
+
+  document.addEventListener("fullscreenchange", updateFullscreenButtons);
+  document.addEventListener("webkitfullscreenchange", updateFullscreenButtons);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && stage && stage.classList.contains("is-fullscreen")) {
+      exitStageFullscreen();
+    }
+  });
+
   Object.keys(socialMap).forEach(function (name) {
     var url = (socialMap[name] || "").trim();
     document.querySelectorAll("[data-social='" + name + "']").forEach(function (node) {
