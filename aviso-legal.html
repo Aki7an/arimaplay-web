@@ -3,62 +3,89 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Aviso legal — Arima Play</title>
-  <meta name="description" content="Aviso legal del sitio web de Arima Play.">
+  <title data-i18n="meta.legal.title">Aviso legal — Arima Play</title>
+  <meta name="description" data-i18n-content="meta.legal.description" content="Aviso legal del sitio web de Arima Play.">
   <link rel="canonical" href="https://arimaplay.com/aviso-legal.html">
+  <link rel="alternate" hreflang="es" href="https://arimaplay.com/aviso-legal.html?lang=es">
+  <link rel="alternate" hreflang="en" href="https://arimaplay.com/aviso-legal.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://arimaplay.com/aviso-legal.html">
   <meta name="theme-color" content="#f4eee2">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        var query = new URLSearchParams(location.search).get("lang");
+        var stored = localStorage.getItem("arimaplay-lang");
+        var lang;
+        if (query) {
+          lang = query.toLowerCase().slice(0, 2) === "en" ? "en" : "es";
+        } else if (stored) {
+          lang = stored.toLowerCase().slice(0, 2) === "en" ? "en" : "es";
+        } else {
+          lang = (navigator.language || "es").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+        }
+        document.documentElement.lang = lang;
+      } catch (err) {}
+    })();
+  </script>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#contenido" data-i18n="nav.skip">Saltar al contenido</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="index.html" aria-label="Arima Play, ir al inicio">
+      <a class="logo" href="index.html" data-i18n-aria-label="logo.home" aria-label="Arima Play, ir al inicio">
         <img class="site-logo" src="assets/images/logo-arimaplay.png" width="840" height="240" alt="Arima Play">
       </a>
-      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navegacion" aria-label="Abrir menú">
-        <span></span>
-      </button>
-      <nav id="navegacion" class="site-nav" data-nav aria-label="Principal">
-        <a href="index.html#inicio">Inicio</a>
-        <a href="index.html#cifraletra">CifraLetra</a>
-        <a href="jugar/">Jugar</a>
-        <a href="index.html#estudio">El estudio</a>
-        <a href="index.html#contacto">Contacto</a>
-        <a class="button" href="jugar/">Jugar ahora</a>
+      <nav id="navegacion" class="site-nav" data-nav data-i18n-aria-label="nav.main" aria-label="Principal">
+        <a href="index.html#inicio" data-i18n="nav.home">Inicio</a>
+        <a href="index.html#cifraletra" data-i18n="nav.game">CifraLetra</a>
+        <a href="jugar/" data-i18n="nav.play">Jugar</a>
+        <a href="index.html#estudio" data-i18n="nav.studio">El estudio</a>
+        <a href="index.html#contacto" data-i18n="nav.contact">Contacto</a>
+        <a class="button" href="jugar/" data-i18n="nav.play_now">Jugar ahora</a>
       </nav>
+      <div class="header-tools">
+        <div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Idioma">
+          <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navegacion" data-i18n-aria-label="nav.open" aria-label="Abrir menú">
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
   <main id="contenido" class="legal-page">
     <div class="wrap legal">
-      <p class="eyebrow">Legal</p>
-      <h1>Aviso legal</h1>
-      <p>Este sitio web, <a href="https://arimaplay.com/">arimaplay.com</a>, pertenece a Arima Play, un estudio independiente de videojuegos.</p>
-      <h2>Titular y contacto</h2>
-      <p>Para cualquier consulta relacionada con el sitio o con CifraLetra, puedes escribir a <a data-contact-email href="mailto:aki7andev@gmail.com">aki7andev@gmail.com</a>.</p>
-      <h2>Objeto</h2>
-      <p>La web informa sobre el estudio y sobre CifraLetra, y ofrece una vía para interesarse como tester. Los contenidos se publican de buena fe y pueden actualizarse sin previo aviso.</p>
-      <h2>Propiedad intelectual</h2>
-      <p>El nombre Arima Play, el nombre CifraLetra, los textos de esta web y los materiales gráficos del juego son propiedad de Arima Play, salvo que se indique otra autoría. No está permitido copiarlos o reutilizarlos con fines comerciales sin permiso.</p>
-      <h2>Enlaces</h2>
-      <p>Si en el futuro esta web enlaza a formularios o redes de terceros, cada servicio tendrá sus propias condiciones. Arima Play no se hace responsable del contenido de sitios externos.</p>
-      <p><a href="index.html">Volver al inicio</a></p>
+      <p class="eyebrow" data-i18n="legal.eyebrow">Legal</p>
+      <h1 data-i18n="legal.notice.title">Aviso legal</h1>
+      <p data-i18n="legal.notice.intro">Este sitio web, arimaplay.com, pertenece a Arima Play, un estudio independiente de videojuegos.</p>
+      <h2 data-i18n="legal.notice.owner">Titular y contacto</h2>
+      <p><span data-i18n="legal.notice.owner_body">Para cualquier consulta relacionada con el sitio o con CifraLetra, puedes escribir a</span> <a data-contact-email href="mailto:aki7andev@gmail.com">aki7andev@gmail.com</a>.</p>
+      <h2 data-i18n="legal.notice.object">Objeto</h2>
+      <p data-i18n="legal.notice.object_body">La web presenta el estudio y CifraLetra, y permite jugar al juego en el navegador. Los contenidos se publican de buena fe y pueden actualizarse sin previo aviso.</p>
+      <h2 data-i18n="legal.notice.ip">Propiedad intelectual</h2>
+      <p data-i18n="legal.notice.ip_body">El nombre Arima Play, el nombre CifraLetra, los textos de esta web y los materiales gráficos del juego son propiedad de Arima Play, salvo que se indique otra autoría. No está permitido copiarlos o reutilizarlos con fines comerciales sin permiso.</p>
+      <h2 data-i18n="legal.notice.links">Enlaces</h2>
+      <p data-i18n="legal.notice.links_body">Si esta web enlaza a redes o servicios de terceros, cada uno tendrá sus propias condiciones. Arima Play no se hace responsable del contenido de sitios externos.</p>
+      <p><a href="index.html" data-i18n="legal.back">Volver al inicio</a></p>
     </div>
   </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <p>© <span data-year>2026</span> Arima Play</p>
       <div class="footer-links">
-        <a href="aviso-legal.html" aria-current="page">Aviso legal</a>
-        <a href="privacidad.html">Política de privacidad</a>
+        <a href="aviso-legal.html" aria-current="page" data-i18n="footer.legal">Aviso legal</a>
+        <a href="privacidad.html" data-i18n="footer.privacy">Política de privacidad</a>
       </div>
     </div>
   </footer>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>

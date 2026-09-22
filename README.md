@@ -1,6 +1,6 @@
 # Arima Play — web oficial
 
-Sitio estático del estudio independiente **Arima Play**. Presenta CifraLetra, la versión jugable en el navegador y la convocatoria de testers.
+Sitio estático del estudio independiente **Arima Play**. Presenta CifraLetra y la versión jugable en el navegador, en castellano e inglés.
 
 - Dominio canónico: https://arimaplay.com
 - Jugar: https://arimaplay.com/jugar/
@@ -20,7 +20,8 @@ privacidad.html
 404.html
 CNAME                 arimaplay.com
 css/styles.css
-js/config.js          Formulario, correo y redes
+js/config.js          Correo y redes
+js/i18n.js            Textos ES/EN
 js/site.js
 assets/images/        Icono y capturas públicas de CifraLetra
 ```
@@ -29,21 +30,13 @@ assets/images/        Icono y capturas públicas de CifraLetra
 
 | Qué cambiar | Dónde |
 |---|---|
-| Formulario de testers | `js/config.js` → `testerFormUrl` |
 | Correo | `js/config.js` → `contactEmail` |
 | Redes | `js/config.js` → `social` (deja vacío lo que no exista) |
+| Textos ES/EN | `js/i18n.js` |
 | Textos de la portada | `index.html` |
 | Aviso legal / privacidad | `aviso-legal.html`, `privacidad.html` |
 | Icono y capturas | `assets/images/` |
 | Paleta y tipografía | `css/styles.css` |
-
-Mientras `testerFormUrl` esté vacío, los botones de tester llevan a la sección y muestran **Próximamente**.
-
-Cuando tengas el formulario (Google Forms, Tally o Formspree), pega la URL completa:
-
-```js
-testerFormUrl: "https://tally.so/r/xxxxxxxx"
-```
 
 ## Imágenes
 

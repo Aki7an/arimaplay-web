@@ -34,35 +34,6 @@
     }
   });
 
-  var testerUrl = (config.testerFormUrl || "").trim();
-  var testerLinks = document.querySelectorAll("[data-tester-link]");
-  var testerNote = document.querySelector("[data-tester-status]");
-
-  testerLinks.forEach(function (link) {
-    if (testerUrl) {
-      link.href = testerUrl;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.removeAttribute("aria-disabled");
-      link.classList.remove("is-disabled");
-    } else {
-      link.href = "#testers";
-      link.setAttribute("aria-disabled", "true");
-      link.classList.add("is-disabled");
-      link.addEventListener("click", function (event) {
-        event.preventDefault();
-        var section = document.getElementById("testers");
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
-    }
-  });
-
-  if (testerNote) {
-    testerNote.hidden = Boolean(testerUrl);
-  }
-
   var mail = (config.contactEmail || "").trim();
   document.querySelectorAll("[data-contact-email]").forEach(function (node) {
     if (!mail) {
@@ -83,6 +54,100 @@
     bluesky: config.social && config.social.bluesky,
     youtube: config.social && config.social.youtube
   };
+
+  var stage = document.getElementById("play-stage");
+  var fullscreenButtons = document.querySelectorAll("[data-fullscreen]");
+
+  function fullscreenElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
+  function isGameFullscreen() {
+    if (!stage) {
+      return false;
+    }
+    return fullscreenElement() === stage || stage.classList.contains("is-fullscreen");
+  }
+
+  function updateFullscreenButtons() {
+    var i18n = window.ARIMA_I18N;
+    var active = isGameFullscreen();
+    var label = i18n
+      ? i18n.t(active ? "fullscreen.exit" : "fullscreen.enter")
+      : (active ? "Salir de pantalla completa" : "Pantalla completa");
+    fullscreenButtons.forEach(function (button) {
+      button.textContent = label;
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
+
+  function requestNativeFullscreen(element) {
+    var request = element.requestFullscreen || element.webkitRequestFullscreen;
+    if (!request) {
+      return null;
+    }
+    var result = request.call(element);
+    if (result && typeof result.then === "function") {
+      return result;
+    }
+    return Promise.resolve();
+  }
+
+  function requestStageFullscreen() {
+    if (!stage) {
+      return Promise.reject();
+    }
+    var native = requestNativeFullscreen(stage);
+    if (native) {
+      return native;
+    }
+    stage.classList.add("is-fullscreen");
+    document.body.style.overflow = "hidden";
+    updateFullscreenButtons();
+    return Promise.resolve();
+  }
+
+  function exitStageFullscreen() {
+    if (fullscreenElement()) {
+      if (document.exitFullscreen) {
+        return document.exitFullscreen();
+      }
+      if (document.webkitExitFullscreen) {
+        return document.webkitExitFullscreen();
+      }
+    }
+    if (stage) {
+      stage.classList.remove("is-fullscreen");
+    }
+    document.body.style.overflow = "";
+    updateFullscreenButtons();
+    return Promise.resolve();
+  }
+
+  fullscreenButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      if (isGameFullscreen()) {
+        exitStageFullscreen();
+      } else {
+        requestStageFullscreen().catch(function () {
+          if (stage) {
+            stage.classList.add("is-fullscreen");
+            document.body.style.overflow = "hidden";
+            updateFullscreenButtons();
+          }
+        });
+      }
+    });
+  });
+
+  document.addEventListener("arimaplay:lang", updateFullscreenButtons);
+  document.addEventListener("fullscreenchange", updateFullscreenButtons);
+  document.addEventListener("webkitfullscreenchange", updateFullscreenButtons);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && stage && stage.classList.contains("is-fullscreen")) {
+      exitStageFullscreen();
+    }
+  });
 
   Object.keys(socialMap).forEach(function (name) {
     var url = (socialMap[name] || "").trim();

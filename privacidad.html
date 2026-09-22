@@ -3,62 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Política de privacidad — Arima Play</title>
-  <meta name="description" content="Política de privacidad del sitio web de Arima Play.">
+  <title data-i18n="meta.privacy.title">Política de privacidad — Arima Play</title>
+  <meta name="description" data-i18n-content="meta.privacy.description" content="Política de privacidad del sitio web de Arima Play.">
   <link rel="canonical" href="https://arimaplay.com/privacidad.html">
+  <link rel="alternate" hreflang="es" href="https://arimaplay.com/privacidad.html?lang=es">
+  <link rel="alternate" hreflang="en" href="https://arimaplay.com/privacidad.html?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://arimaplay.com/privacidad.html">
   <meta name="theme-color" content="#f4eee2">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        var query = new URLSearchParams(location.search).get("lang");
+        var stored = localStorage.getItem("arimaplay-lang");
+        var lang;
+        if (query) {
+          lang = query.toLowerCase().slice(0, 2) === "en" ? "en" : "es";
+        } else if (stored) {
+          lang = stored.toLowerCase().slice(0, 2) === "en" ? "en" : "es";
+        } else {
+          lang = (navigator.language || "es").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+        }
+        document.documentElement.lang = lang;
+      } catch (err) {}
+    })();
+  </script>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#contenido" data-i18n="nav.skip">Saltar al contenido</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="index.html" aria-label="Arima Play, ir al inicio">
+      <a class="logo" href="index.html" data-i18n-aria-label="logo.home" aria-label="Arima Play, ir al inicio">
         <img class="site-logo" src="assets/images/logo-arimaplay.png" width="840" height="240" alt="Arima Play">
       </a>
-      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navegacion" aria-label="Abrir menú">
-        <span></span>
-      </button>
-      <nav id="navegacion" class="site-nav" data-nav aria-label="Principal">
-        <a href="index.html#inicio">Inicio</a>
-        <a href="index.html#cifraletra">CifraLetra</a>
-        <a href="jugar/">Jugar</a>
-        <a href="index.html#estudio">El estudio</a>
-        <a href="index.html#contacto">Contacto</a>
-        <a class="button" href="jugar/">Jugar ahora</a>
+      <nav id="navegacion" class="site-nav" data-nav data-i18n-aria-label="nav.main" aria-label="Principal">
+        <a href="index.html#inicio" data-i18n="nav.home">Inicio</a>
+        <a href="index.html#cifraletra" data-i18n="nav.game">CifraLetra</a>
+        <a href="jugar/" data-i18n="nav.play">Jugar</a>
+        <a href="index.html#estudio" data-i18n="nav.studio">El estudio</a>
+        <a href="index.html#contacto" data-i18n="nav.contact">Contacto</a>
+        <a class="button" href="jugar/" data-i18n="nav.play_now">Jugar ahora</a>
       </nav>
+      <div class="header-tools">
+        <div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Idioma">
+          <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navegacion" data-i18n-aria-label="nav.open" aria-label="Abrir menú">
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
   <main id="contenido" class="legal-page">
     <div class="wrap legal">
-      <p class="eyebrow">Legal</p>
-      <h1>Política de privacidad</h1>
-      <p>Esta política describe cómo trata Arima Play los datos a través de <a href="https://arimaplay.com/">arimaplay.com</a>. El sitio es estático: no tiene cuenta de usuario ni base de datos propia.</p>
-      <h2>Qué datos tratamos</h2>
-      <p>Esta web no usa cookies de analítica ni formularios propios. Si nos escribes por correo, usaremos tu dirección y el contenido del mensaje solo para responderte.</p>
-      <p>Cuando exista un formulario de testers, lo alojará un tercero (por ejemplo Google Forms, Tally o Formspree). En ese momento se aplicarán también las condiciones de ese servicio. Te lo indicaremos al activarlo.</p>
-      <h2>CifraLetra</h2>
-      <p>Puedes jugar CifraLetra en <a href="https://arimaplay.com/jugar/">arimaplay.com/jugar</a>. El juego se ejecuta en tu navegador y guarda en este dispositivo (almacenamiento local) las preferencias, partidas y el progreso. Las funciones en línea, si están activas, pueden usar un identificador técnico, el nombre elegido en el juego y datos básicos de la partida para prestar el servicio. CifraLetra no utiliza esos datos para rastrearte entre apps o sitios web.</p>
-      <h2>Conservación y derechos</h2>
-      <p>Los correos se conservan el tiempo necesario para atender la consulta. Puedes pedir acceso, rectificación o supresión escribiendo a <a data-contact-email href="mailto:aki7andev@gmail.com">aki7andev@gmail.com</a>.</p>
-      <p>Última actualización: 6 de septiembre de 2026.</p>
-      <p><a href="index.html">Volver al inicio</a></p>
+      <p class="eyebrow" data-i18n="legal.eyebrow">Legal</p>
+      <h1 data-i18n="privacy.title">Política de privacidad</h1>
+      <p data-i18n="privacy.intro">Esta política describe cómo trata Arima Play los datos a través de arimaplay.com. El sitio es estático: no tiene cuenta de usuario ni base de datos propia.</p>
+      <h2 data-i18n="privacy.data">Qué datos tratamos</h2>
+      <p data-i18n="privacy.data_body">Esta web no usa cookies de analítica ni formularios propios. Si nos escribes por correo, usaremos tu dirección y el contenido del mensaje solo para responderte.</p>
+      <h2 data-i18n="privacy.game">CifraLetra</h2>
+      <p data-i18n="privacy.game_body">Puedes jugar CifraLetra en arimaplay.com/jugar. El juego se ejecuta en tu navegador y guarda en este dispositivo (almacenamiento local) las preferencias, partidas y el progreso. Las funciones en línea, si están activas, pueden usar un identificador técnico, el nombre elegido en el juego y datos básicos de la partida para prestar el servicio. CifraLetra no utiliza esos datos para rastrearte entre apps o sitios web.</p>
+      <h2 data-i18n="privacy.rights">Conservación y derechos</h2>
+      <p><span data-i18n="privacy.rights_body">Los correos se conservan el tiempo necesario para atender la consulta. Puedes pedir acceso, rectificación o supresión escribiendo a</span> <a data-contact-email href="mailto:aki7andev@gmail.com">aki7andev@gmail.com</a>.</p>
+      <p data-i18n="privacy.updated">Última actualización: 22 de septiembre de 2026.</p>
+      <p><a href="index.html" data-i18n="legal.back">Volver al inicio</a></p>
     </div>
   </main>
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <p>© <span data-year>2026</span> Arima Play</p>
       <div class="footer-links">
-        <a href="aviso-legal.html">Aviso legal</a>
-        <a href="privacidad.html" aria-current="page">Política de privacidad</a>
+        <a href="aviso-legal.html" data-i18n="footer.legal">Aviso legal</a>
+        <a href="privacidad.html" aria-current="page" data-i18n="footer.privacy">Política de privacidad</a>
       </div>
     </div>
   </footer>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>

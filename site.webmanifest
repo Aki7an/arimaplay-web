@@ -1,7 +1,7 @@
 {
   "name": "Arima Play",
   "short_name": "Arima Play",
-  "description": "Estudio independiente de videojuegos. CifraLetra está en desarrollo.",
+  "description": "Estudio independiente de videojuegos. Juega CifraLetra en el navegador.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

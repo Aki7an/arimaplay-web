@@ -3,20 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arima Play — Estudio independiente de videojuegos</title>
-  <meta name="description" content="Arima Play es un estudio independiente. Juega CifraLetra en el navegador: lógica, letras y deducción.">
+  <title data-i18n="meta.home.title">Arima Play — Estudio independiente de videojuegos</title>
+  <meta name="description" data-i18n-content="meta.home.description" content="Arima Play es un estudio independiente. Juega CifraLetra en el navegador: lógica, letras y deducción.">
   <link rel="canonical" href="https://arimaplay.com/">
+  <link rel="alternate" hreflang="es" href="https://arimaplay.com/?lang=es">
+  <link rel="alternate" hreflang="en" href="https://arimaplay.com/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://arimaplay.com/">
   <meta name="theme-color" content="#f4eee2">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale" data-i18n-content="meta.og_locale" content="es_ES">
   <meta property="og:site_name" content="Arima Play">
-  <meta property="og:title" content="Arima Play — Juegos para pensar y descubrir">
-  <meta property="og:description" content="Estudio independiente. Nuestro primer juego, CifraLetra, está en desarrollo y buscamos testers.">
+  <meta property="og:title" data-i18n-content="meta.home.og_title" content="Arima Play — Juegos para pensar y descubrir">
+  <meta property="og:description" data-i18n-content="meta.home.og_description" content="Estudio independiente. Juega CifraLetra en el navegador: lógica, letras y deducción.">
   <meta property="og:url" content="https://arimaplay.com/">
   <meta property="og:image" content="https://arimaplay.com/assets/images/icono-cifraletra.png">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Arima Play">
-  <meta name="twitter:description" content="Estudio independiente. CifraLetra está en desarrollo y busca testers.">
+  <meta name="twitter:description" data-i18n-content="meta.home.og_description" content="Estudio independiente. Juega CifraLetra en el navegador: lógica, letras y deducción.">
   <meta name="twitter:image" content="https://arimaplay.com/assets/images/icono-cifraletra.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/images/icono-cifraletra.png">
@@ -25,25 +28,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        var query = new URLSearchParams(location.search).get("lang");
+        var stored = localStorage.getItem("arimaplay-lang");
+        var lang;
+        if (query) {
+          lang = query.toLowerCase().slice(0, 2) === "en" ? "en" : "es";
+        } else if (stored) {
+          lang = stored.toLowerCase().slice(0, 2) === "en" ? "en" : "es";
+        } else {
+          lang = (navigator.language || "es").toLowerCase().indexOf("es") === 0 ? "es" : "en";
+        }
+        document.documentElement.lang = lang;
+      } catch (err) {}
+    })();
+  </script>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#contenido" data-i18n="nav.skip">Saltar al contenido</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="#inicio" aria-label="Arima Play, ir al inicio">
+      <a class="logo" href="#inicio" data-i18n-aria-label="logo.home" aria-label="Arima Play, ir al inicio">
         <img class="site-logo" src="assets/images/logo-arimaplay.png" width="840" height="240" alt="Arima Play">
       </a>
-      <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navegacion" aria-label="Abrir menú">
-        <span></span>
-      </button>
-      <nav id="navegacion" class="site-nav" data-nav aria-label="Principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#cifraletra">CifraLetra</a>
-        <a href="jugar/">Jugar</a>
-        <a href="#estudio">El estudio</a>
-        <a href="#contacto">Contacto</a>
-        <a class="button" href="jugar/">Jugar ahora</a>
+      <nav id="navegacion" class="site-nav" data-nav data-i18n-aria-label="nav.main" aria-label="Principal">
+        <a href="#inicio" data-i18n="nav.home">Inicio</a>
+        <a href="#cifraletra" data-i18n="nav.game">CifraLetra</a>
+        <a href="jugar/" data-i18n="nav.play">Jugar</a>
+        <a href="#estudio" data-i18n="nav.studio">El estudio</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+        <a class="button" href="jugar/" data-i18n="nav.play_now">Jugar ahora</a>
       </nav>
+      <div class="header-tools">
+        <div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Idioma">
+          <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navegacion" data-i18n-aria-label="nav.open" aria-label="Abrir menú">
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -51,15 +77,14 @@
     <section class="hero" id="inicio">
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow">Estudio independiente</p>
-          <h1>Juega. Piensa. Descubre la palabra.</h1>
-          <p class="lead">Arima Play crea juegos para pensar, descubrir y disfrutar. Nuestro primer juego, CifraLetra, está en desarrollo y buscamos testers que quieran ayudarnos a mejorarlo.</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Estudio independiente</p>
+          <h1 data-i18n="hero.title">Juega. Piensa. Descubre la palabra.</h1>
+          <p class="lead" data-i18n="hero.lead">Arima Play crea juegos para pensar, descubrir y disfrutar. Nuestro primer juego, CifraLetra, es un pasatiempo de lógica, letras y deducción que ya puedes jugar en el navegador.</p>
           <div class="hero-actions">
-            <a class="button" href="jugar/">Jugar CifraLetra</a>
-            <a class="button-secondary" data-tester-link href="#testers">Quiero ser tester</a>
+            <a class="button" href="jugar/" data-i18n="hero.play">Jugar CifraLetra</a>
           </div>
         </div>
-        <aside class="hero-board" aria-label="Presentación visual de CifraLetra">
+        <aside class="hero-board" data-i18n-aria-label="hero.board" aria-label="Presentación visual de CifraLetra">
           <div class="tiles" aria-hidden="true">
             <div class="tile"><small>3</small><b>C</b></div>
             <div class="tile"><small>15</small><b>Ó</b></div>
@@ -68,9 +93,9 @@
             <div class="tile"><small>7</small><b>G</b></div>
             <div class="tile"><small>15</small><b>O</b></div>
           </div>
-          <p class="hero-caption">CifraLetra: un pasatiempo de lógica, letras y deducción.</p>
+          <p class="hero-caption" data-i18n="hero.caption">CifraLetra: un pasatiempo de lógica, letras y deducción.</p>
           <figure class="phone-frame">
-            <img src="assets/images/captura-menu.png" width="720" height="1280" alt="Pantalla inicial de CifraLetra, con el lema Descifra la frase y el botón Jugar.">
+            <img src="assets/images/captura-menu.png" width="720" height="1280" data-i18n-alt="hero.alt_menu" alt="Pantalla inicial de CifraLetra, con el lema Descifra la frase y el botón Jugar.">
           </figure>
         </aside>
       </div>
@@ -79,89 +104,57 @@
     <section class="section" id="cifraletra" aria-labelledby="titulo-cifraletra">
       <div class="wrap split">
         <div>
-          <p class="eyebrow">Primer juego</p>
-          <h2 id="titulo-cifraletra">CifraLetra, para jugar ya</h2>
-          <p class="lead">CifraLetra es un juego de lógica, letras y deducción en el que cada número esconde una letra. El reto es descifrar la frase.</p>
-          <p class="muted">Ya puedes probarlo en el navegador. Seguimos afinando el juego y queremos oír a quien lo juegue: si algo se atasca o no se entiende, cuéntanoslo.</p>
+          <p class="eyebrow" data-i18n="game.eyebrow">Primer juego</p>
+          <h2 id="titulo-cifraletra" data-i18n="game.title">CifraLetra, para jugar ya</h2>
+          <p class="lead" data-i18n="game.lead">CifraLetra es un juego de lógica, letras y deducción en el que cada número esconde una letra. El reto es descifrar la frase.</p>
+          <p class="muted" data-i18n="game.body">Ya puedes probarlo en el navegador. Seguimos afinando el juego: si algo se atasca o no se entiende, cuéntanoslo.</p>
           <div class="hero-actions">
-            <a class="button" href="jugar/">Jugar en el navegador</a>
-            <a class="button-secondary" data-tester-link href="#testers">Apuntarme como tester</a>
+            <a class="button" href="jugar/" data-i18n="game.play">Jugar en el navegador</a>
           </div>
         </div>
         <div class="card">
           <img class="game-icon" src="assets/images/icono-cifraletra.png" width="180" height="180" alt="Icono de CifraLetra: una ficha con la letra E y el número 5.">
-          <h3>Qué puedes esperar</h3>
-          <p class="muted">Una experiencia de pasatiempo centrada en frases, patrones y deducción. Juega ya en el navegador; iremos publicando mejoras.</p>
+          <h3 data-i18n="game.expect_title">Qué puedes esperar</h3>
+          <p class="muted" data-i18n="game.expect_body">Una experiencia de pasatiempo centrada en frases, patrones y deducción. Juega ya en el navegador; iremos publicando mejoras.</p>
         </div>
       </div>
       <div class="wrap gallery" style="margin-top: 1.5rem;">
         <figure class="shot">
-          <img src="assets/images/captura-partida.png" width="720" height="1280" alt="Partida de CifraLetra: una cuadrícula de números y letras, con teclado y pistas.">
+          <img src="assets/images/captura-partida.png" width="720" height="1280" data-i18n-alt="game.alt_match" alt="Partida de CifraLetra: una cuadrícula de números y letras, con teclado y pistas.">
         </figure>
         <figure class="shot">
-          <img src="assets/images/captura-temas.png" width="720" height="1280" alt="Pantalla de CifraLetra para elegir el tipo de partida y la temática.">
+          <img src="assets/images/captura-temas.png" width="720" height="1280" data-i18n-alt="game.alt_themes" alt="Pantalla de CifraLetra para elegir el tipo de partida y la temática.">
         </figure>
-      </div>
-    </section>
-
-    <section class="section" id="testers" aria-labelledby="titulo-testers">
-      <div class="wrap">
-        <p class="eyebrow">Comunidad</p>
-        <h2 id="titulo-testers">Buscamos testers</h2>
-        <p class="lead">Si te gustan los juegos de palabras y la lógica, puedes ayudarnos a probar versiones previas de CifraLetra, avisar de errores y decirnos qué se entiende y qué no.</p>
-        <div class="cards">
-          <article class="card">
-            <h3>Probar</h3>
-            <p class="muted">Jugar builds de desarrollo y recorrer el juego como lo haría alguien que lo descubre por primera vez.</p>
-          </article>
-          <article class="card">
-            <h3>Contar</h3>
-            <p class="muted">Señalar fallos, textos raros o momentos en los que te quedas atascado sin que el juego te ayude.</p>
-          </article>
-          <article class="card">
-            <h3>Opinar</h3>
-            <p class="muted">Decirnos qué engancha y qué sobra. No hace falta experiencia previa como tester.</p>
-          </article>
-        </div>
-        <div class="notice" style="margin-top: 1.5rem;">
-          <span class="status-pill" data-tester-status>Próximamente</span>
-          <h3>Apuntarme como tester</h3>
-          <p class="muted">El formulario está abierto. Cuéntanos un poco sobre ti y te avisaremos cuando haya una versión de CifraLetra para probar.</p>
-          <div class="inline-actions">
-            <a class="button" data-tester-link href="#testers">Apuntarme como tester</a>
-            <a class="button-secondary" data-contact-email data-keep-label href="mailto:aki7andev@gmail.com">Escribir al estudio</a>
-          </div>
-        </div>
       </div>
     </section>
 
     <section class="section" id="estudio" aria-labelledby="titulo-estudio">
       <div class="wrap">
-        <p class="eyebrow">Quiénes somos</p>
-        <h2 id="titulo-estudio">Un estudio que empieza con CifraLetra</h2>
-        <p class="lead">Arima Play es un estudio independiente de videojuegos. Esta es su primera etapa: un equipo pequeño, dos juegos en marcha y ganas de construir con cuidado.</p>
-        <p class="muted">No hay una gran oficina ni una lista larga de títulos. Hay un pasatiempo de letras que queremos dejar redondo antes de publicarlo, un segundo juego que todavía está más lejos, y esta web para contarlo con claridad.</p>
+        <p class="eyebrow" data-i18n="studio.eyebrow">Quiénes somos</p>
+        <h2 id="titulo-estudio" data-i18n="studio.title">Un estudio que empieza con CifraLetra</h2>
+        <p class="lead" data-i18n="studio.lead">Arima Play es un estudio independiente de videojuegos. Esta es su primera etapa: un equipo pequeño, dos juegos en marcha y ganas de construir con cuidado.</p>
+        <p class="muted" data-i18n="studio.body">No hay una gran oficina ni una lista larga de títulos. Hay un pasatiempo de letras que queremos dejar redondo, un segundo juego que todavía está más lejos, y esta web para contarlo con claridad.</p>
         <div class="cards pair">
           <article class="card">
-            <p class="eyebrow">Primer juego</p>
+            <p class="eyebrow" data-i18n="studio.first">Primer juego</p>
             <h3>CifraLetra</h3>
-            <p class="muted">Lógica, letras y deducción. Ya se puede jugar en el navegador; seguimos buscando testers para dejarlo redondo.</p>
-            <p><a class="button" href="jugar/">Jugar CifraLetra</a></p>
+            <p class="muted" data-i18n="studio.cipher_blurb">Lógica, letras y deducción. Ya se puede jugar en el navegador.</p>
+            <p><a class="button" href="jugar/" data-i18n="hero.play">Jugar CifraLetra</a></p>
             <div class="game-media">
-              <img class="game-icon" src="assets/images/icono-cifraletra.png" width="180" height="180" alt="Icono de CifraLetra.">
+              <img class="game-icon" src="assets/images/icono-cifraletra.png" width="180" height="180" data-i18n-alt="studio.alt_icon" alt="Icono de CifraLetra.">
               <figure class="shot">
-                <img src="assets/images/captura-partida.png" width="720" height="1280" alt="Pantalla de partida de CifraLetra.">
+                <img src="assets/images/captura-partida.png" width="720" height="1280" data-i18n-alt="studio.alt_match" alt="Pantalla de partida de CifraLetra.">
               </figure>
             </div>
           </article>
           <article class="card">
-            <p class="eyebrow">Siguiente juego</p>
+            <p class="eyebrow" data-i18n="studio.next">Siguiente juego</p>
             <h3>SoundScope</h3>
-            <p class="muted">Un juego centrado en el sonido. Sigue en prototipo: todavía le queda camino antes de entrar en fase de pruebas. Cuando esté listo, lo contaremos aquí.</p>
+            <p class="muted" data-i18n="studio.sound_blurb">Un juego centrado en el sonido. Sigue en prototipo y todavía le queda camino. Cuando esté listo, lo contaremos aquí.</p>
             <div class="game-media">
-              <img class="game-logo" src="assets/images/logo-soundscope.png" width="640" height="220" alt="Logotipo de SoundScope.">
+              <img class="game-logo" src="assets/images/logo-soundscope.png" width="640" height="220" data-i18n-alt="studio.alt_logo" alt="Logotipo de SoundScope.">
               <figure class="shot shot-dark">
-                <img src="assets/images/captura-soundscope.png" width="720" height="1280" alt="Pantalla de inicio de SoundScope: Reconstruye el recuerdo con el oído.">
+                <img src="assets/images/captura-soundscope.png" width="720" height="1280" data-i18n-alt="studio.alt_sound" alt="Pantalla de inicio de SoundScope: Reconstruye el recuerdo con el oído.">
               </figure>
             </div>
           </article>
@@ -171,9 +164,9 @@
 
     <section class="section" id="contacto" aria-labelledby="titulo-contacto">
       <div class="wrap">
-        <p class="eyebrow">Contacto</p>
-        <h2 id="titulo-contacto">Hablemos</h2>
-        <p class="lead">Para soporte, prensa o para apuntarte cuando abramos las pruebas, escríbenos.</p>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Contacto</p>
+        <h2 id="titulo-contacto" data-i18n="contact.title">Hablemos</h2>
+        <p class="lead" data-i18n="contact.lead">Para soporte o prensa, escríbenos.</p>
         <p><a data-contact-email href="mailto:aki7andev@gmail.com">aki7andev@gmail.com</a></p>
         <div class="socials">
           <a data-social="instagram" hidden href="#">Instagram</a>
@@ -192,14 +185,15 @@
         <p><a href="https://arimaplay.com/">arimaplay.com</a></p>
       </div>
       <div class="footer-links">
-        <a href="aviso-legal.html">Aviso legal</a>
-        <a href="privacidad.html">Política de privacidad</a>
-        <a href="jugar/">Jugar</a>
-        <a href="#cifraletra">CifraLetra</a>
+        <a href="aviso-legal.html" data-i18n="footer.legal">Aviso legal</a>
+        <a href="privacidad.html" data-i18n="footer.privacy">Política de privacidad</a>
+        <a href="jugar/" data-i18n="nav.play">Jugar</a>
+        <a href="#cifraletra" data-i18n="nav.game">CifraLetra</a>
       </div>
     </div>
   </footer>
   <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>
