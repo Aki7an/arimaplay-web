@@ -89,15 +89,74 @@ body {
 	text-align: center;
 	z-index: 1;
 }
+
+#fullscreen-btn {
+	position: fixed;
+	right: max(12px, env(safe-area-inset-right));
+	bottom: max(12px, env(safe-area-inset-bottom));
+	z-index: 20;
+	display: none;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	padding: 10px 14px;
+	border: 0;
+	border-radius: 999px;
+	color: #fffdf8;
+	background: rgba(21, 54, 95, 0.88);
+	box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+	font: 700 13px/1.1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	letter-spacing: 0.02em;
+	cursor: pointer;
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
+#fullscreen-btn:hover,
+#fullscreen-btn:focus-visible {
+	background: rgba(21, 54, 95, 1);
+	outline: none;
+}
+
+#fullscreen-btn svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+#fullscreen-btn.is-fullscreen .icon-enter,
+#fullscreen-btn:not(.is-fullscreen) .icon-exit {
+	display: none;
+}
 		</style>
 		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
 <link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
-
+<script async data-adbreak-test="on" data-ad-frequency-hint="30s" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3940256099942544" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<canvas id="canvas">
 			Your browser does not support the canvas tag.
 		</canvas>
+
+		<button id="fullscreen-btn" type="button" aria-pressed="false" aria-label="Pantalla completa">
+			<svg class="icon-enter" viewBox="0 0 24 24" aria-hidden="true">
+				<polyline points="15 3 21 3 21 9"></polyline>
+				<polyline points="9 21 3 21 3 15"></polyline>
+				<line x1="21" y1="3" x2="14" y2="10"></line>
+				<line x1="3" y1="21" x2="10" y2="14"></line>
+			</svg>
+			<svg class="icon-exit" viewBox="0 0 24 24" aria-hidden="true">
+				<polyline points="9 3 3 3 3 9"></polyline>
+				<polyline points="15 21 21 21 21 15"></polyline>
+				<line x1="3" y1="3" x2="10" y2="10"></line>
+				<line x1="21" y1="21" x2="14" y2="14"></line>
+			</svg>
+			<span id="fullscreen-label">Pantalla completa</span>
+		</button>
 
 		<noscript>
 			Your browser does not support JavaScript.
@@ -125,7 +184,7 @@ body {
 		</script>
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":113091176,"index.wasm":39509339},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":70917532,"index.wasm":39509339},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 
 (function () {
@@ -165,9 +224,58 @@ const engine = new Engine(GODOT_CONFIG);
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');
+	const fullscreenBtn = document.getElementById('fullscreen-btn');
+	const fullscreenLabel = document.getElementById('fullscreen-label');
 
 	let initializing = true;
 	let statusMode = '';
+
+	function fullscreenElement() {
+		return document.fullscreenElement || document.webkitFullscreenElement || null;
+	}
+
+	function canFullscreen() {
+		const root = document.documentElement;
+		return !!(root.requestFullscreen || root.webkitRequestFullscreen);
+	}
+
+	function syncFullscreenButton() {
+		const active = fullscreenElement() != null;
+		fullscreenBtn.classList.toggle('is-fullscreen', active);
+		fullscreenBtn.setAttribute('aria-pressed', active ? 'true' : 'false');
+		fullscreenBtn.setAttribute('aria-label', active ? 'Salir de pantalla completa' : 'Pantalla completa');
+		fullscreenLabel.textContent = active ? 'Salir' : 'Pantalla completa';
+	}
+
+	function toggleFullscreen() {
+		if (fullscreenElement()) {
+			const exit = document.exitFullscreen || document.webkitExitFullscreen;
+			if (exit) {
+				exit.call(document);
+			}
+			return;
+		}
+		const root = document.documentElement;
+		const enter = root.requestFullscreen || root.webkitRequestFullscreen;
+		if (enter) {
+			const result = enter.call(root);
+			if (result && typeof result.catch === 'function') {
+				result.catch(function () {});
+			}
+		}
+	}
+
+	if (canFullscreen()) {
+		fullscreenBtn.style.display = 'flex';
+		fullscreenBtn.addEventListener('click', function (event) {
+			event.preventDefault();
+			event.stopPropagation();
+			toggleFullscreen();
+		});
+		document.addEventListener('fullscreenchange', syncFullscreenButton);
+		document.addEventListener('webkitfullscreenchange', syncFullscreenButton);
+		syncFullscreenButton();
+	}
 
 	function setStatusMode(mode) {
 		if (statusMode === mode || !initializing) {
@@ -220,7 +328,6 @@ const engine = new Engine(GODOT_CONFIG);
 			} catch (err) {
 				serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
 			}
-			// There's a chance that installing the service worker would fix the issue
 			Promise.race([
 				serviceWorkerRegistrationPromise.then((registration) => {
 					if (registration != null) {
@@ -228,18 +335,15 @@ const engine = new Engine(GODOT_CONFIG);
 					}
 					return registration;
 				}).then(() => engine.installServiceWorker()),
-				// For some reason, `getRegistration()` can stall
 				new Promise((resolve) => {
 					setTimeout(() => resolve(), 2000);
 				}),
 			]).then(() => {
-				// Reload if there was no error.
 				window.location.reload();
 			}).catch((err) => {
 				console.error('Error while registering service worker:', err);
 			});
 		} else {
-			// Display the message as usual
 			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
 			displayFailureNotice(missingMsg + missing.join('\n'));
 		}
