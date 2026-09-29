@@ -15,7 +15,7 @@ Este repositorio es independiente del videojuego. No incluye keystores, contrase
 ```text
 index.html            Portada
 jugar/                Elección: app de iOS o demo web
-jugar/demo.html       Demo de 4 puzles en el navegador
+jugar/demo.html       Versión demo con un puzle por categoría
 jugar/engine/         Export HTML de Godot
 aviso-legal.html
 privacidad.html
