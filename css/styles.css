@@ -504,6 +504,112 @@ h3 {
   text-align: center;
 }
 
+.choose-page {
+  padding-top: 3.2rem;
+}
+
+.choose-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.25rem;
+  align-items: stretch;
+  margin-top: 1.8rem;
+}
+
+.choose-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--tile);
+  box-shadow: var(--shadow);
+}
+
+.choose-card h2 {
+  margin: 0;
+}
+
+.choose-card .muted {
+  margin: 0;
+}
+
+.choose-card .button,
+.choose-card .button-secondary {
+  margin-top: auto;
+}
+
+.choose-card-ios {
+  position: relative;
+  padding: 1.7rem 1.6rem 1.6rem;
+  border: 3px solid var(--orange);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(227, 106, 28, 0.18), transparent 16rem),
+    #fffaf3;
+  box-shadow: 0 18px 40px rgba(227, 106, 28, 0.16);
+}
+
+.choose-badge {
+  margin: 0;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: var(--orange);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.choose-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.choose-points li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 1.2rem;
+  font-weight: 750;
+}
+
+.choose-points li + li {
+  margin-top: 0.45rem;
+}
+
+.choose-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.85rem;
+  height: 0.45rem;
+  border-left: 3px solid var(--teal);
+  border-bottom: 3px solid var(--teal);
+  transform: rotate(-45deg);
+}
+
+.button-store {
+  min-height: 3.4rem;
+  padding-inline: 1.35rem;
+  background: #111;
+  box-shadow: 0 8px 0 #000;
+  font-size: 1.05rem;
+}
+
+.button-store:hover {
+  color: white;
+  background: #222;
+}
+
+.button-store svg {
+  width: 1rem;
+  height: 1.15rem;
+}
+
 @media (max-width: 860px) {
   .nav-toggle {
     display: inline-block;
@@ -537,6 +643,7 @@ h3 {
   .split,
   .cards,
   .cards.pair,
+  .choose-grid,
   .game-split,
   .gallery {
     grid-template-columns: 1fr;

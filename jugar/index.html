@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title data-i18n="meta.play.title">Jugar CifraLetra — Arima Play</title>
-  <meta name="description" data-i18n-content="meta.play.description" content="Juega CifraLetra en el navegador: un pasatiempo de lógica, letras y deducción.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.choose.title">Jugar CifraLetra — Arima Play</title>
+  <meta name="description" data-i18n-content="meta.choose.description" content="Descarga CifraLetra para iOS, gratis con anuncios y más de 100 puzles, o prueba la demo web de 4 puzles.">
   <link rel="canonical" href="https://arimaplay.com/jugar/">
   <link rel="alternate" hreflang="es" href="https://arimaplay.com/jugar/?lang=es">
   <link rel="alternate" hreflang="en" href="https://arimaplay.com/jugar/?lang=en">
@@ -13,8 +13,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" data-i18n-content="meta.og_locale" content="es_ES">
   <meta property="og:site_name" content="Arima Play">
-  <meta property="og:title" data-i18n-content="meta.play.og_title" content="Jugar CifraLetra">
-  <meta property="og:description" data-i18n-content="meta.play.og_description" content="Descifra la frase. Cada número esconde una letra.">
+  <meta property="og:title" data-i18n-content="meta.choose.og_title" content="Jugar CifraLetra">
+  <meta property="og:description" data-i18n-content="meta.choose.og_description" content="App de iOS gratis con más de 100 puzles, o demo web de 4 puzles.">
   <meta property="og:url" content="https://arimaplay.com/jugar/">
   <meta property="og:image" content="https://arimaplay.com/assets/images/icono-cifraletra.png">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
@@ -41,40 +41,59 @@
     })();
   </script>
 </head>
-<body class="play-page">
-  <a class="skip-link" href="#juego" data-i18n="play.skip">Saltar al juego</a>
-  <header class="site-header play-header">
+<body>
+  <a class="skip-link" href="#contenido" data-i18n="nav.skip">Saltar al contenido</a>
+  <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="../index.html" data-i18n-aria-label="logo.home" aria-label="Arima Play, ir al inicio">
         <img class="site-logo" src="../assets/images/logo-arimaplay.png" width="840" height="240" alt="Arima Play">
       </a>
+      <nav id="navegacion" class="site-nav" data-nav data-i18n-aria-label="nav.main" aria-label="Principal">
+        <a href="../index.html#inicio" data-i18n="nav.home">Inicio</a>
+        <a href="../index.html#cifraletra" data-i18n="nav.game">CifraLetra</a>
+        <a href="../index.html#estudio" data-i18n="nav.studio">El estudio</a>
+        <a href="../index.html#contacto" data-i18n="nav.contact">Contacto</a>
+        <a class="button" href="./" aria-current="page" data-i18n="nav.play_now">Jugar ahora</a>
+      </nav>
       <div class="header-tools">
-        <nav class="play-nav" data-i18n-aria-label="play.nav" aria-label="Partida">
-          <a href="../index.html" data-i18n="nav.home">Inicio</a>
-        </nav>
         <div class="lang-switch" role="group" data-i18n-aria-label="lang.label" aria-label="Idioma">
           <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
           <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
         </div>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="navegacion" data-i18n-aria-label="nav.open" aria-label="Abrir menú">
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main id="juego" class="play-main">
-    <div class="play-copy wrap">
-      <p class="eyebrow">CifraLetra</p>
-      <h1 data-i18n="play.title">Juega en el navegador</h1>
-      <p class="muted" data-i18n="play.lead">La primera carga puede tardar: el juego pesa y se descarga completa. Luego se queda en este dispositivo.</p>
-    </div>
-    <div class="play-stage">
-      <iframe
-        id="cifraletra-frame"
-        data-i18n-title="play.iframe"
-        title="CifraLetra"
-        src="engine/index.html?v=1.0.3-clean"
-        allow="autoplay; fullscreen; gamepad; accelerometer"
-        allowfullscreen
-      ></iframe>
+  <main id="contenido" class="section choose-page">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="choose.eyebrow">CifraLetra</p>
+      <h1 data-i18n="choose.title">Elige cómo jugar</h1>
+      <p class="lead" data-i18n="choose.lead">La app de iOS es gratis y trae el juego completo. En la web puedes probar una demo de 4 puzles.</p>
+      <div class="choose-grid">
+        <article class="choose-card choose-card-ios">
+          <p class="choose-badge" data-i18n="choose.ios_badge">Recomendado</p>
+          <img class="game-icon" src="../assets/images/icono-cifraletra.png" width="180" height="180" alt="">
+          <h2 data-i18n="choose.ios_title">Versión iOS</h2>
+          <ul class="choose-points">
+            <li data-i18n="choose.ios_free">Gratis con anuncios</li>
+            <li data-i18n="choose.ios_puzzles">Más de 100 puzles</li>
+          </ul>
+          <a class="button button-store" data-app-store href="https://apps.apple.com/app/id6807821718" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 14 17" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M11.4 9.1c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.8-.7-1.4 0-2.8.9-3.5 2.2-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.6.7 2.8.7 1.9-1.1 2.6-2.1c.8-1.2 1.1-2.3 1.2-2.4-.1 0-2.2-.9-2.3-3.4zM9.5 2.7c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1.1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/>
+            </svg>
+            <span data-i18n="choose.ios_cta">Descargar para iOS</span>
+          </a>
+        </article>
+        <article class="choose-card">
+          <h2 data-i18n="choose.web_title">Versión web</h2>
+          <p class="muted" data-i18n="choose.web_body">Demo de 4 puzles en el navegador, sin instalar nada.</p>
+          <a class="button-secondary" href="demo.html" data-i18n="choose.web_cta">Jugar la demo</a>
+        </article>
+      </div>
     </div>
   </main>
   <script src="../js/config.js"></script>

@@ -34,6 +34,13 @@
     }
   });
 
+  var storeUrl = (config.appStoreUrl || "").trim();
+  document.querySelectorAll("[data-app-store]").forEach(function (node) {
+    if (storeUrl && node.tagName === "A") {
+      node.href = storeUrl;
+    }
+  });
+
   var mail = (config.contactEmail || "").trim();
   document.querySelectorAll("[data-contact-email]").forEach(function (node) {
     if (!mail) {

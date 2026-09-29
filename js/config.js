@@ -8,6 +8,8 @@ window.ARIMA_PLAY = {
 
   contactEmail: "aki7andev@gmail.com",
 
+  appStoreUrl: "https://apps.apple.com/app/id6807821718",
+
   social: {
     instagram: "",
     x: "",
